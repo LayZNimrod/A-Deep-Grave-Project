@@ -646,8 +646,9 @@ GameObject:
   - component: {fileID: 1267913872}
   - component: {fileID: 1267913871}
   - component: {fileID: 1267913870}
+  - component: {fileID: 1267913873}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TriggerSound-ROAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +779,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1.5259838, y: 0}
@@ -809,6 +810,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267913873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267913869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b7086183bff3a41bf985dc93ad364c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 519420034}
 --- !u!1 &1289743836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1571,10 @@ PrefabInstance:
     - target: {fileID: 1647604974979291042, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
       propertyPath: m_Name
       value: Submarine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647604974979291042, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
