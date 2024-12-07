@@ -22,25 +22,31 @@ public class ProximityUI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Increment nearby object count
-        nearbyObjectsCount++;
-
-        // Start fading in the icon
-        if (nearbyObjectsCount > 0)
+        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature"))
         {
-            StartCoroutine(FadeIcon(1)); // Fade to full visibility
+            // Increment nearby object count
+            nearbyObjectsCount++;
+
+            // Start fading in the icon
+            if (nearbyObjectsCount > 0)
+            {
+                StartCoroutine(FadeIcon(1)); // Fade to full visibility
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Decrement nearby object count
-        nearbyObjectsCount--;
-
-        // Start fading out the icon if no objects are nearby
-        if (nearbyObjectsCount <= 0)
+        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature"))
         {
-            StartCoroutine(FadeIcon(0)); // Fade to invisible
+            // Decrement nearby object count
+            nearbyObjectsCount--;
+
+            // Start fading out the icon if no objects are nearby
+            if (nearbyObjectsCount <= 0)
+            {
+                StartCoroutine(FadeIcon(0)); // Fade to invisible
+            }
         }
     }
 
