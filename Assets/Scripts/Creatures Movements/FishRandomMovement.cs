@@ -6,9 +6,9 @@ public class FishRandomMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed = 3.0f;             // Speed of the fish movement
-    public float decelerationTime = 1.0f;  // Time it takes for the fish to slow down to a stop
     [Range(1, 100)]
     public float randomness = 50f;         // Randomness of movement (higher values = more erratic movement)
+    public float decelerationTime = 1.0f;  // Time it takes for the fish to slow down to a stop
 
     [Header("Area Settings")]
     public Collider2D movementArea;       // The collider defining the movement area
@@ -40,9 +40,9 @@ public class FishRandomMovement : MonoBehaviour
             // When the fish has stopped, set a new random direction
             if (currentSpeed <= 0.1f)
             {
-                SetRandomDirection();              // Change direction randomly
+                SetRandomDirection();  // Change direction randomly
                 SetRandomTimeToChangeDirection();  // Reset the timer
-                currentSpeed = speed;              // Reset speed back to original
+                currentSpeed = speed;  // Reset speed back to original
             }
         }
 
@@ -50,35 +50,34 @@ public class FishRandomMovement : MonoBehaviour
         ConstrainToArea();
     }
 
-    // Randomize direction based on randomness value
     private void SetRandomDirection()
     {
+        // Randomize direction based on randomness value
         float randomAngle = Random.Range(0f, 360f);  // Random angle between 0 and 360 degrees
         direction = new Vector2(Mathf.Cos(randomAngle * Mathf.Deg2Rad), Mathf.Sin(randomAngle * Mathf.Deg2Rad));
     }
 
-    // Set a random time interval before changing direction (higher randomness = more frequent changes)
     private void SetRandomTimeToChangeDirection()
     {
+        // Set a random time interval before changing direction (higher randomness = more frequent changes)
         timeToChangeDirection = Random.Range(1f, 5f / (randomness / 100f));  // Random time based on randomness value
     }
 
-    // Move the fish in the current direction, based on current speed and time
     private void MoveFish()
     {
+        // Move the fish in the current direction, based on current speed and time
         transform.Translate(direction * currentSpeed * Time.deltaTime);
     }
 
-    // Decelerate the fish over time based on decelerationTime
     private void Decelerate()
     {
-        
+        // Decelerate the fish over time based on decelerationTime
         currentSpeed = Mathf.Max(0f, currentSpeed - (speed / decelerationTime) * Time.deltaTime);
     }
 
     private void ConstrainToArea()
     {
-        // Constrain the fish's position within the bounds
+        // If the movement area is defined, constrain the fish's position within the bounds
         if (movementArea != null)
         {
             Bounds bounds = movementArea.bounds;

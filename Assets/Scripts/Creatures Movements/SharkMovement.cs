@@ -116,4 +116,11 @@ public class SharkMovement : MonoBehaviour
 
         return targetPosition;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Visualize the detection range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
 }
