@@ -14,11 +14,14 @@ public class PlaySFX : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D player)
     {
-        if (audioSource != null)
+        if (player.CompareTag("Player"))
         {
-            audioSource.Play();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+            this.GetComponent<BoxCollider2D>().enabled = false;
         }
-        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     // Update is called once per frame
