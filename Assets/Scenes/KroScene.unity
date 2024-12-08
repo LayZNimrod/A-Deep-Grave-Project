@@ -2572,7 +2572,7 @@ GameObject:
   - component: {fileID: 1557383927}
   m_Layer: 4
   m_Name: Eye
-  m_TagString: Untagged
+  m_TagString: BigBad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2779,6 +2779,8 @@ MonoBehaviour:
   shakeTimer: 12
   StartFrequency: 1
   EndFrequency: 3
+  speed: 1
+  cam: {fileID: 1586812393}
   animator: {fileID: 1557383924}
 --- !u!61 &1557383929
 BoxCollider2D:
@@ -2834,6 +2836,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57aca685e85163c4eb791c3deb918226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1586812393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1458480514027580890, guid: 0822866b47567be4893f8887eb7ee6f4, type: 3}
+  m_PrefabInstance: {fileID: 623833984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1614022891

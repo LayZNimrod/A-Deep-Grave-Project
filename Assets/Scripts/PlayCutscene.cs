@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,18 @@ public class PlayCutscene : MonoBehaviour
     [SerializeField] private float StartFrequency = 1f;
     [SerializeField] private float EndFrequency = 3f;
 
+    public float speed = 1;
+
+    private bool triggerZoom;
+
+    [SerializeField] private CinemachineVirtualCamera cam;
+    
+
     public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        triggerZoom = false;
         audioSource = GetComponent<AudioSource>();
         animator.SetBool("Closed", true);
         animator.SetBool("Anim", false);
@@ -27,6 +36,7 @@ public class PlayCutscene : MonoBehaviour
     IEnumerator AnimateEye()
     {
         Debug.Log("REACHED BOOL");
+        triggerZoom = true;
         animator.SetBool("Anim", true);
         animator.SetBool("Open", false);
         animator.SetBool("Closed", false);
@@ -37,6 +47,14 @@ public class PlayCutscene : MonoBehaviour
         Debug.Log("REACHED END");
     }
 
+    IEnumerator ZoomOut()
+    {
+        if (cam.m_Lens.OrthographicSize <= 13)
+        {
+            cam.m_Lens.OrthographicSize += 1;
+            yield return new WaitForSeconds(1);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D player)
     {
         if (audioSource != null)
@@ -54,6 +72,9 @@ public class PlayCutscene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (triggerZoom)
+        {
+            StartCoroutine(ZoomOut());
+        }
     }
 }
