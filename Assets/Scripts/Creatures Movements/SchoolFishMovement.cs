@@ -69,4 +69,20 @@ public class SchoolFishMovement : MonoBehaviour
         scale.x = movingForward ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+
+        // Calculate start and target points
+        Vector2 start = Application.isPlaying ? startPoint : (Vector2)transform.position;
+        Vector2 end = start + Vector2.right * travelDistance;
+
+        // Draw a line to represent the travel distance
+        Gizmos.DrawLine(start, end);
+
+        // Mark start and target points
+        Gizmos.DrawSphere(start, 0.2f);
+        Gizmos.DrawSphere(end, 0.2f);
+    }
 }
