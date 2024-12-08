@@ -6,10 +6,13 @@ public class PlayCutscene : MonoBehaviour
 {
     public AudioSource audioSource;
 
-    [Header("Movement Settings")]
+    //Copy this around
+    [Header("CameraShake Settings")]
     [SerializeField] private CineMachineShake cameraShake;
     [SerializeField] private float shakeIntensity = 1f;
     [SerializeField] private float shakeTimer = 1f;
+    [SerializeField] private float StartFrequency = 1f;
+    [SerializeField] private float EndFrequency = 3f;
 
     public GameObject ToAnimate;
 
@@ -25,7 +28,8 @@ public class PlayCutscene : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
-            cameraShake.ShakeCamera(shakeIntensity, shakeTimer);
+            //Copy this around
+            cameraShake.ShakeCamera(shakeIntensity, shakeTimer, StartFrequency, EndFrequency);
             AnimateEye();
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
