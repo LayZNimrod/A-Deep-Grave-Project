@@ -6,6 +6,7 @@ using Cinemachine;
 public class CineMachineShake : MonoBehaviour
 {
     public static CineMachineShake Instance { get; private set; }
+
     private CinemachineVirtualCamera CNvirtualCamera;
     private float shakeTimer;
 
@@ -32,7 +33,7 @@ public class CineMachineShake : MonoBehaviour
         if(shakeTimer > 0)
         {
             shakeTimer -= Time.deltaTime;
-            if(shakeTimer < 0f) {
+            if(shakeTimer <= 0f) {
                 CinemachineBasicMultiChannelPerlin CNvirtualCameraMultiChannelPerlin = CNvirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
                 CNvirtualCameraMultiChannelPerlin.m_AmplitudeGain = 0f;
