@@ -8,6 +8,7 @@ public class SerialListiner : MonoBehaviour
     public int sensor_val = 0;
     public int buttonR = 0;
     public int buttonL = 0;
+    public int numToSend = 0;
 
     // Start is called before the first frame update
 
@@ -37,15 +38,7 @@ public class SerialListiner : MonoBehaviour
     {
         if (true)
         {
-            se.SendSerialMessage("2");
-        }
-        else if (false)
-        {
-            se.SendSerialMessage("1");
-        }
-        else
-        {
-            se.SendSerialMessage("0");
+            se.SendSerialMessage(numToSend.ToString()+"\n");
         }
     }
 }
