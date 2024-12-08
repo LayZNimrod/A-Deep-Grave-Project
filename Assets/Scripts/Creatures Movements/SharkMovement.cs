@@ -12,13 +12,15 @@ public class SharkMovement : MonoBehaviour
     public Transform target;                // The target the shark will chase
 
     private bool isChasing = false;         // Whether the shark is currently chasing the target
-
     private Vector2 originalPosition;       // The original position of the shark
     private float noDetectionTimer = 0f;    // Timer for detecting if the shark should return to its original position
     [Header("Time Settings")]
     public float returnToStartTime = 5.0f;  // Time in seconds before shark returns to its original position if no player detected
     private bool hasDetectedPlayer = false; // Flag to track if the shark has detected the player at least once
 
+    private SpriteRenderer spriteRenderer;
+    private Transform lightObject;
+    private Vector3 initialLightPosition;
 
     private void Start()
     {
@@ -39,6 +41,11 @@ public class SharkMovement : MonoBehaviour
                 Debug.LogWarning("No target assigned to SharkEnemy and no player found in the scene.");
             }
         }
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        lightObject = transform.Find("Light 2D");
+        if (lightObject != null)
+            initialLightPosition = lightObject.localPosition;
     }
 
     private void Update()
@@ -87,12 +94,20 @@ public class SharkMovement : MonoBehaviour
 
         // Move the shark towards the clamped target position
         transform.position = targetPosition;
+
+        // Flip the sprite and light based on the direction
+        FlipBasedOnDirection(direction);
     }
 
     private void ReturnToOriginalPosition()
     {
+        // Calculate the direction to the original position
+        Vector2 direction = (originalPosition - (Vector2)transform.position).normalized;
+
         // Move the shark back to the original position
         transform.position = Vector2.MoveTowards(transform.position, originalPosition, chaseSpeed * Time.deltaTime);
+
+        FlipBasedOnDirection(direction);
 
         // If the shark reaches the original position, stop moving
         if (Vector2.Distance(transform.position, originalPosition) <= 0.1f)
@@ -122,5 +137,19 @@ public class SharkMovement : MonoBehaviour
         // Visualize the detection range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+    }
+
+    private void FlipBasedOnDirection(Vector2 direction)
+    {
+        bool movingForward = direction.x > 0;
+
+        if (spriteRenderer == null)
+            return;
+        //The Sprite itself
+        spriteRenderer.flipX = movingForward;
+        Vector3 lightPosition = initialLightPosition;
+        //The Light Position
+        lightPosition.x = movingForward ? -initialLightPosition.x : initialLightPosition.x;
+        lightObject.localPosition = lightPosition;
     }
 }
