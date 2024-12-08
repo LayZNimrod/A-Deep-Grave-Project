@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SharkMovement : MonoBehaviour
 {
+    [Header("Movement Settings")]
     public float chaseSpeed = 3.0f;         // Speed at which the shark chases the player or target
     public float detectionRange = 5.0f;     // Range at which the shark detects the target
     public float stoppingDistance = 1.0f;   // Distance at which the shark stops chasing
@@ -14,6 +15,7 @@ public class SharkMovement : MonoBehaviour
 
     private Vector2 originalPosition;       // The original position of the shark
     private float noDetectionTimer = 0f;    // Timer for detecting if the shark should return to its original position
+    [Header("Time Settings")]
     public float returnToStartTime = 5.0f;  // Time in seconds before shark returns to its original position if no player detected
     private bool hasDetectedPlayer = false; // Flag to track if the shark has detected the player at least once
 

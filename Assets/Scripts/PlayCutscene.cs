@@ -17,7 +17,7 @@ public class PlayCutscene : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
-            CineMachineShake.Instance.ShakeCamera(5, 15);
+            CineMachineShake.Instance.ShakeCamera(5f, 15f);
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
     }
