@@ -17,8 +17,17 @@ public class FishRandomMovement : MonoBehaviour
     private float timeToChangeDirection;   // Timer to change direction
     private float currentSpeed;            // Current speed of the fish (which will be reduced over time)
 
+    private SpriteRenderer spriteRenderer;
+    private Transform lightObject;
+    private Vector3 initialLightPosition;
+
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        lightObject = transform.Find("Light 2D");
+        if (lightObject != null)
+            initialLightPosition = lightObject.localPosition;
+
         // Initialize random direction and set a random time to change direction
         SetRandomDirection();
         SetRandomTimeToChangeDirection();
@@ -45,6 +54,8 @@ public class FishRandomMovement : MonoBehaviour
                 currentSpeed = speed;  // Reset speed back to original
             }
         }
+
+        FlipBasedOnDirection(-direction);
 
         // Constrain the fish's position within the movement area
         ConstrainToArea();
@@ -90,4 +101,20 @@ public class FishRandomMovement : MonoBehaviour
             transform.position = new Vector2(clampedX, clampedY);
         }
     }
+
+    private void FlipBasedOnDirection(Vector2 direction)
+    {
+        bool movingForward = direction.x > 0;
+
+        if (spriteRenderer == null)
+            return;
+        //The Sprite itself
+        spriteRenderer.flipX = movingForward;
+        Vector3 lightPosition = initialLightPosition;
+        //The Light Position
+        lightPosition.x = movingForward ? -initialLightPosition.x : initialLightPosition.x;
+        lightObject.localPosition = lightPosition;
+    }
+
 }
+
