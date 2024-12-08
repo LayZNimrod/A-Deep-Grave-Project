@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7286975686404654049}
   - component: {fileID: 7466756816772244395}
   - component: {fileID: 8316092204092891721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Submarine
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: c7f27e806e826c4488134e67ad184513, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697694101814323021}
   - component: {fileID: 4020552012747463178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 7749256059474398214}
   - component: {fileID: 9117446570364196900}
   - component: {fileID: 5297787418065408860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,8 +284,8 @@ Transform:
   m_GameObject: {fileID: 6571293073179594738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.023092, y: -0.00000019633, z: 0}
-  m_LocalScale: {x: 44.14996, y: 44.718384, z: 93.34564}
+  m_LocalPosition: {x: -0.00022949, y: -0.027454, z: 0}
+  m_LocalScale: {x: 36.27732, y: 36.744385, z: 76.70063}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1632426776274073300}
@@ -336,6 +336,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.5259587e-16, y: 0.0075129652}
-  m_Size: {x: 0.4999991, y: 0.9736768}
+  m_Offset: {x: -0.003485725, y: 0.0029244178}
+  m_Size: {x: 0.4790812, y: 0.813054}
   m_Direction: 0
