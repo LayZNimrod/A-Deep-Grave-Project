@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1632426776274073300}
   - component: {fileID: 8410774230910756907}
-  - component: {fileID: 7286975686404654049}
   - component: {fileID: 7466756816772244395}
   - component: {fileID: 8316092204092891721}
+  - component: {fileID: 9063640673996560283}
   m_Layer: 7
   m_Name: Submarine
   m_TagString: Player
@@ -89,51 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7286975686404654049
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647604974979291042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01695919, y: 0.02836287}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.38, y: 2.25}
-    newSize: {x: 5.38, y: 2.25}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.9390707, y: 1.9788554}
-  m_EdgeRadius: 0
 --- !u!50 &7466756816772244395
 Rigidbody2D:
   serializedVersion: 4
@@ -175,6 +130,139 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   body: {fileID: 7466756816772244395}
+--- !u!60 &9063640673996560283
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647604974979291042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.38, y: 2.25}
+    newSize: {x: 5.38, y: 2.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.83, y: -0.935}
+      - {x: 1.06, y: -0.92499995}
+      - {x: 1.35, y: -0.905}
+      - {x: 1.8, y: -0.865}
+      - {x: 1.8499999, y: -0.78499997}
+      - {x: 1.8399999, y: -0.66499996}
+      - {x: 2.08, y: -0.635}
+      - {x: 2.21, y: -0.60499996}
+      - {x: 2.37, y: -0.515}
+      - {x: 2.4299998, y: -0.42499998}
+      - {x: 2.49, y: -0.285}
+      - {x: 2.49, y: -0.015}
+      - {x: 2.44, y: 0.105}
+      - {x: 2.3799999, y: 0.21499999}
+      - {x: 2.33, y: 0.285}
+      - {x: 2.06, y: 0.405}
+      - {x: 1.77, y: 0.435}
+      - {x: 1.61, y: 0.435}
+      - {x: 1.53, y: 0.475}
+      - {x: 1.37, y: 0.435}
+      - {x: 1.02, y: 0.445}
+      - {x: 0.95, y: 0.465}
+      - {x: 0.96, y: 0.66499996}
+      - {x: 0.84999996, y: 0.715}
+      - {x: 0.51, y: 0.715}
+      - {x: 0.13, y: 0.695}
+      - {x: 0.14, y: 0.78499997}
+      - {x: 0.12, y: 0.805}
+      - {x: 0.049999997, y: 0.825}
+      - {x: 0.02, y: 0.715}
+      - {x: 0.02, y: 0.885}
+      - {x: 0, y: 0.895}
+      - {x: -0.049999997, y: 0.895}
+      - {x: -0.06, y: 0.885}
+      - {x: -0.07, y: 0.685}
+      - {x: -0.26999998, y: 0.60499996}
+      - {x: -0.45, y: 0.60499996}
+      - {x: -0.69, y: 0.53499997}
+      - {x: -0.84999996, y: 0.475}
+      - {x: -0.9, y: 0.375}
+      - {x: -1.06, y: 0.415}
+      - {x: -1.26, y: 0.585}
+      - {x: -1.5, y: 0.59499997}
+      - {x: -1.56, y: 0.575}
+      - {x: -1.5899999, y: 0.275}
+      - {x: -1.5999999, y: 0.085}
+      - {x: -1.65, y: -0.044999998}
+      - {x: -1.76, y: -0.065}
+      - {x: -1.87, y: 0.044999998}
+      - {x: -2, y: 0.044999998}
+      - {x: -2, y: 0.39499998}
+      - {x: -2.08, y: 0.445}
+      - {x: -2.28, y: 0.435}
+      - {x: -2.35, y: 0.415}
+      - {x: -2.3899999, y: 0.36499998}
+      - {x: -2.3799999, y: 0.024999999}
+      - {x: -2.4099998, y: 0.035}
+      - {x: -2.45, y: -0.035}
+      - {x: -2.45, y: -0.42499998}
+      - {x: -2.44, y: -0.48499998}
+      - {x: -2.4199998, y: -0.53499997}
+      - {x: -2.3899999, y: -0.905}
+      - {x: -2.33, y: -0.945}
+      - {x: -2.1599998, y: -0.945}
+      - {x: -2.03, y: -0.935}
+      - {x: -2.01, y: -0.91499996}
+      - {x: -2.01, y: -0.745}
+      - {x: -1.99, y: -0.555}
+      - {x: -1.86, y: -0.555}
+      - {x: -1.7199999, y: -0.45499998}
+      - {x: -1.68, y: -0.505}
+      - {x: -1.56, y: -0.615}
+      - {x: -1.38, y: -0.695}
+      - {x: -1.39, y: -0.91499996}
+      - {x: -1.3, y: -0.955}
+      - {x: -1.16, y: -0.955}
+      - {x: -1.13, y: -0.945}
+      - {x: -0.96999997, y: -0.955}
+      - {x: -0.19999999, y: -0.955}
+      - {x: -0.17999999, y: -0.91499996}
+      - {x: 0.45, y: -0.91499996}
+    - - {x: 0.14999999, y: 0.72499996}
+      - {x: 0.17, y: 0.705}
+      - {x: 0.19, y: 0.705}
+      - {x: 0.22, y: 0.72499996}
+      - {x: 0.22, y: 0.965}
+      - {x: 0.17999999, y: 1.005}
+      - {x: 0.14999999, y: 0.995}
+  m_UseDelaunayMesh: 0
 --- !u!1 &3686430181375131006
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proximityIcon: {fileID: 0}
+  proximityIconGlitch: {fileID: 7400000, guid: ce9efee745214f64e80ebae3c3bf2ea6, type: 2}
   fadeSpeed: 2
 --- !u!70 &5297787418065408860
 CapsuleCollider2D:
