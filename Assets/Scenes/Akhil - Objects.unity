@@ -494,6 +494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Submarine
       objectReference: {fileID: 0}
+    - target: {fileID: 6571293073179594738, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      propertyPath: m_Name
+      value: UICollider
+      objectReference: {fileID: 0}
     - target: {fileID: 9117446570364196900, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
       propertyPath: proximityIcon
       value: 
@@ -501,7 +505,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1647604974979291042, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1657656388}
   m_SourcePrefab: {fileID: 100100000, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
 --- !u!4 &322124780 stripped
 Transform:
@@ -1759,6 +1766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1487098250652573781, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3763895051342640869, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.45
@@ -1895,6 +1906,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1657656383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1647604974979291042, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+  m_PrefabInstance: {fileID: 322124777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1657656388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657656383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8762e9d3fc98194eb783c32552f668d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 4
+  bumpDistance: 2
+  invulnerabilityTime: 2
+  bumpForce: 5
 --- !u!1001 &1673896285
 PrefabInstance:
   m_ObjectHideFlags: 0

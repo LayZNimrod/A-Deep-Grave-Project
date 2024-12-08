@@ -24,25 +24,31 @@ public class PlayerGameLogic : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the submarine is invulnerable
-        if (isInvulnerable) return;
-
-        // Check if the collision is with an object tagged "Environment" or "Living Creatures"
-        if (collision.CompareTag("Environment") || collision.CompareTag("LivingCreatures"))
+        // Check if the collision is with an "Environment" object and handle accordingly
+        if (!isInvulnerable && collision.gameObject.CompareTag("Environment"))
         {
-            HandleCollision(collision);
+            HandleCollision(collision.contacts[0].point, collision.transform.position);
         }
     }
 
-    private void HandleCollision(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the collision is with an object tagged "Environment" or "Living Creatures"
+        if (!isInvulnerable && other.CompareTag("LivingCreature"))
+        {
+            HandleCollision(transform.position, other.transform.position);
+        }
+    }
+
+    private void HandleCollision(Vector2 impactPoint, Vector2 sourcePosition)
     {
         currentLives--; // Reduce lives
         Debug.Log($"Submarine hit! Remaining lives: {currentLives}");
 
         // Handle bumping away from the collision object
-        Vector2 bumpDirection = (transform.position - collision.transform.position).normalized;
+        Vector3 bumpDirection = ((Vector2)transform.position - sourcePosition).normalized;
         rb.AddForce(bumpDirection * bumpForce, ForceMode2D.Impulse);
 
         // Trigger invulnerability
