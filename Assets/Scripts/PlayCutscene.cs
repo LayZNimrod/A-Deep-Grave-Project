@@ -14,13 +14,27 @@ public class PlayCutscene : MonoBehaviour
     [SerializeField] private float StartFrequency = 1f;
     [SerializeField] private float EndFrequency = 3f;
 
-    public GameObject ToAnimate;
-
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        ToAnimate.GetComponent<Animator>().Play("EyeClosed");
+        animator.SetBool("Closed", true);
+        animator.SetBool("Anim", false);
+        animator.SetBool("Open", false);
+    }
+
+    IEnumerator AnimateEye()
+    {
+        Debug.Log("REACHED BOOL");
+        animator.SetBool("Anim", true);
+        animator.SetBool("Open", false);
+        animator.SetBool("Closed", false);
+        yield return new WaitForSeconds(4);
+        animator.SetBool("Open", true);
+        animator.SetBool("Closed", false);
+        animator.SetBool("Anim", false);
+        Debug.Log("REACHED END");
     }
 
     private void OnTriggerEnter2D(Collider2D player)
@@ -29,18 +43,14 @@ public class PlayCutscene : MonoBehaviour
         {
             audioSource.Play();
             //Copy this around
+            Debug.Log("REACHED EYE");
+            StartCoroutine(AnimateEye());
             cameraShake.ShakeCamera(shakeIntensity, shakeTimer, StartFrequency, EndFrequency);
-            AnimateEye();
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    IEnumerator AnimateEye()
-    {
-        ToAnimate.GetComponent<Animator>().Play("EyeAnim");
-        yield return new WaitForSeconds(15);
-        ToAnimate.GetComponent<Animator>().Play("EyeOpen ");
-    }
+
     // Update is called once per frame
     void Update()
     {
