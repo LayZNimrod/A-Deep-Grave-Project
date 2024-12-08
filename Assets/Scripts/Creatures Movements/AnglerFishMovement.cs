@@ -23,8 +23,17 @@ public class AnglerFishMovement : MonoBehaviour
     private bool isChasing = false;              // Whether currently chasing
     private float noTargetTimer = 0f;            // Timer after losing the target
 
+    private SpriteRenderer spriteRenderer;
+    private Transform lightObject;
+    private Vector3 initialLightPosition;
+
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        lightObject = transform.Find("Light 2D");
+        if (lightObject != null)
+        initialLightPosition = lightObject.localPosition;
+
         SetRandomDirection();
         SetRandomTimeToChangeDirection();
         currentSpeed = passiveSpeed;
@@ -63,6 +72,7 @@ public class AnglerFishMovement : MonoBehaviour
 
         Move(passiveDirection, currentSpeed);
         ConstrainToArea();
+        FlipBasedOnDirection(passiveDirection);
     }
 
     private void CheckForTarget()
@@ -90,6 +100,7 @@ public class AnglerFishMovement : MonoBehaviour
         {
             Vector2 directionToTarget = (target.position - transform.position).normalized;
             Move(directionToTarget, chaseSpeed);
+            FlipBasedOnDirection(directionToTarget);
             noTargetTimer = 0f; // Reset timer while chasing
         }
         else
@@ -135,6 +146,20 @@ public class AnglerFishMovement : MonoBehaviour
         float clampedY = Mathf.Clamp(transform.position.y, bounds.min.y, bounds.max.y);
 
         transform.position = new Vector2(clampedX, clampedY);
+    }
+
+    private void FlipBasedOnDirection(Vector2 direction)
+    {
+        bool movingForward = direction.x > 0;
+
+        if (spriteRenderer == null)
+            return;
+        //The Sprite itself
+        spriteRenderer.flipX = movingForward;
+        Vector3 lightPosition = initialLightPosition;
+        //The Light Position
+        lightPosition.x = movingForward ? -initialLightPosition.x : initialLightPosition.x;
+        lightObject.localPosition = lightPosition;
     }
 
     private void OnDrawGizmosSelected()
