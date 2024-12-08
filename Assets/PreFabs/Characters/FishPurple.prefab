@@ -49,7 +49,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.77254903, g: 1, b: 1, a: 1}
-  m_Intensity: 1.42
+  m_Intensity: 0.22
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1.13
+  m_PointLightOuterRadius: 0.7
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8596766067133487520}
   - component: {fileID: 1487098250652573781}
   - component: {fileID: 8781352096469579062}
+  - component: {fileID: 1068790074917396523}
   m_Layer: 0
   m_Name: FishPurple
   m_TagString: Untagged
@@ -241,3 +242,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1068790074917396523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101554587875392338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156a99fb31da51d44b39651b6a98b268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  randomness: 50
+  decelerationTime: 1
+  movementArea: {fileID: 0}

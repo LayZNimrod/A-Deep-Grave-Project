@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21528e974494200489ce2d6604d603db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  travelDistance: 10
+  speed: 7
+  travelDistance: 35.3
   turnAroundTime: 1
 --- !u!1001 &724037005938469161
 PrefabInstance:
@@ -187,7 +187,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishBlue (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 997535361266769892, guid: bd6cb4b413172834f90fd8bfa6c65e45, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -249,7 +250,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishBlue (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 997535361266769892, guid: bd6cb4b413172834f90fd8bfa6c65e45, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -311,7 +313,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishPurple (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1068790074917396523, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -373,7 +376,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGreen (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428817600210031525, guid: f6691e904c057d94fb68fc6c230d3ed9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -435,7 +439,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGreen (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428817600210031525, guid: f6691e904c057d94fb68fc6c230d3ed9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -497,7 +502,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishPurple (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1068790074917396523, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -559,7 +565,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGreen (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428817600210031525, guid: f6691e904c057d94fb68fc6c230d3ed9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -621,7 +628,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishPurple (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1068790074917396523, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -683,7 +691,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishPurple (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1068790074917396523, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -745,7 +754,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishPurple (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1068790074917396523, guid: 9df2b3b84c3e78b44ba321201ba460df, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -807,7 +817,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGreen (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428817600210031525, guid: f6691e904c057d94fb68fc6c230d3ed9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -869,7 +880,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGreen (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1428817600210031525, guid: f6691e904c057d94fb68fc6c230d3ed9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -931,7 +943,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishBlue (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 997535361266769892, guid: bd6cb4b413172834f90fd8bfa6c65e45, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -993,7 +1006,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishBlue (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 997535361266769892, guid: bd6cb4b413172834f90fd8bfa6c65e45, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

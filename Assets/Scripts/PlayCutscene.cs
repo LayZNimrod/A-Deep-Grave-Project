@@ -47,9 +47,9 @@ public class PlayCutscene : MonoBehaviour
     IEnumerator ZoomOut()
     {
         for (int i = 0; i<=12; i++)
-        if (cam.m_Lens.OrthographicSize <= 12)
+        if (cam.m_Lens.OrthographicSize <= 13)
         {
-            cam.m_Lens.OrthographicSize +=1;
+            cam.m_Lens.OrthographicSize +=0.5f;
             yield return new WaitForSeconds(0.2f);
         }
     }
