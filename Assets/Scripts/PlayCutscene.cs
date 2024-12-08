@@ -6,6 +6,11 @@ public class PlayCutscene : MonoBehaviour
 {
     public AudioSource audioSource;
 
+    [Header("Movement Settings")]
+    [SerializeField] private CineMachineShake cameraShake;
+    [SerializeField] private float shakeIntensity = 1f;
+    [SerializeField] private float shakeTimer = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +22,7 @@ public class PlayCutscene : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.Play();
-            CineMachineShake.Instance.ShakeCamera(5f, 15f);
+            cameraShake.ShakeCamera(shakeIntensity, shakeTimer);
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
     }

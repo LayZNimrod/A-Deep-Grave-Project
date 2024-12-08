@@ -5,39 +5,30 @@ using Cinemachine;
 
 public class CineMachineShake : MonoBehaviour
 {
-    public static CineMachineShake Instance { get; private set; }
-
     private CinemachineVirtualCamera CNvirtualCamera;
-    private float shakeTimer;
+    private CinemachineBasicMultiChannelPerlin perlinNoise;
 
     private void Awake()
     {
-        /*
-         * Can be accessed from other scripts by using this
-         * CineMachineShake.Instance.ShakeCamera(intensity, time);
-        */
-        Instance = this;
         CNvirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        perlinNoise = CNvirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        ResetIntensity();
     }
 
-    public void ShakeCamera(float intensity, float time)
+    public void ShakeCamera(float intensity, float shakeTime)
     {
-        CinemachineBasicMultiChannelPerlin CNvirtualCameraMultiChannelPerlin = CNvirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
-        CNvirtualCameraMultiChannelPerlin.m_AmplitudeGain = intensity;
-        shakeTimer = time;
+        perlinNoise.m_AmplitudeGain = intensity;
+        StartCoroutine(WaitTime(shakeTime));
     }
 
-    private void Update()
+    IEnumerator WaitTime(float shakeTime)
     {
-        if(shakeTimer > 0)
-        {
-            shakeTimer -= Time.deltaTime;
-            if(shakeTimer <= 0f) {
-                CinemachineBasicMultiChannelPerlin CNvirtualCameraMultiChannelPerlin = CNvirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        yield return new WaitForSeconds(shakeTime);
+        ResetIntensity();
+    }
 
-                CNvirtualCameraMultiChannelPerlin.m_AmplitudeGain = 0f;
-            }
-        }
+    void ResetIntensity()
+    {
+        perlinNoise.m_AmplitudeGain = 0f;
     }
 }
