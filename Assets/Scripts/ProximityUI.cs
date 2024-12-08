@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ProximityUI : MonoBehaviour
 {
     public Image proximityIcon; //Assign UI icon in the Inspector
+    public AnimationClip proximityIconGlitch; //Assign UI icon in the Inspector
     public float fadeSpeed = 2.0f;    // Speed of the fade in/out
 
     private int nearbyObjectsCount = 0; // Tracks how many objects are within range

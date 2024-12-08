@@ -17,8 +17,6 @@ public class PlayCutscene : MonoBehaviour
 
     public float speed = 1;
 
-    private bool triggerZoom;
-
     [SerializeField] private CinemachineVirtualCamera cam;
     
 
@@ -26,7 +24,6 @@ public class PlayCutscene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        triggerZoom = false;
         audioSource = GetComponent<AudioSource>();
         animator.SetBool("Closed", true);
         animator.SetBool("Anim", false);
@@ -36,7 +33,7 @@ public class PlayCutscene : MonoBehaviour
     IEnumerator AnimateEye()
     {
         Debug.Log("REACHED BOOL");
-        triggerZoom = true;
+        StartCoroutine(ZoomOut());
         animator.SetBool("Anim", true);
         animator.SetBool("Open", false);
         animator.SetBool("Closed", false);
@@ -49,10 +46,11 @@ public class PlayCutscene : MonoBehaviour
 
     IEnumerator ZoomOut()
     {
-        if (cam.m_Lens.OrthographicSize <= 13)
+        for (int i = 0; i<=12; i++)
+        if (cam.m_Lens.OrthographicSize <= 12)
         {
-            cam.m_Lens.OrthographicSize += 1;
-            yield return new WaitForSeconds(1);
+            cam.m_Lens.OrthographicSize +=1;
+            yield return new WaitForSeconds(0.2f);
         }
     }
     private void OnTriggerEnter2D(Collider2D player)
@@ -72,9 +70,6 @@ public class PlayCutscene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triggerZoom)
-        {
-            StartCoroutine(ZoomOut());
-        }
+
     }
 }
