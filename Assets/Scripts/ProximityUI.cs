@@ -15,12 +15,28 @@ public class ProximityUI : MonoBehaviour
     private int nearbyObjectsCount = 0; // Tracks how many objects are within range
     private Color iconColor;           // Stores the initial color of the icon
 
+    public Transform submarine;
+
     private void Start()
     {
         if (proximityIcon != null)
         {
             iconColor = proximityIcon.color; // Save the initial icon color
             SetIconAlpha(0); // Ensure the icon is invisible at the start
+        }
+
+        if (submarine == null)
+        {
+            Debug.LogWarning("Submarine reference is missing in ProximityUI.");
+        }
+    }
+
+    private void Update()
+    {
+        if (submarine != null)
+        {
+            // Update position to follow the submarine
+            transform.position = submarine.position;
         }
     }
 

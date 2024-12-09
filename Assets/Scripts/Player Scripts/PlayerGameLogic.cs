@@ -75,6 +75,8 @@ public class PlayerGameLogic : MonoBehaviour
 
     private void HandleCollision()
     {
+        if (isInvulnerable) return; // Ignore damage if invulnerable
+
         currentLives--; // Reduce lives
         Debug.Log($"Submarine hit! Remaining lives: {currentLives}");
 
@@ -102,7 +104,6 @@ public class PlayerGameLogic : MonoBehaviour
     private IEnumerator InvulnerabilityCoroutine()
     {
         isInvulnerable = true;
-        submarineCollider.enabled = false; // Temporarily disable primary collider
 
         if (lightObject != null)
         {
@@ -111,7 +112,6 @@ public class PlayerGameLogic : MonoBehaviour
 
         yield return new WaitForSeconds(invulnerabilityTime);
         isInvulnerable = false;
-        submarineCollider.enabled = true; // Re-enable primary collider
     }
 
     private IEnumerator FlickerLightCoroutine()
