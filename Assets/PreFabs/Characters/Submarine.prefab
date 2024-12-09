@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8410774230910756907}
   - component: {fileID: 7466756816772244395}
   - component: {fileID: 8316092204092891721}
+  - component: {fileID: 8243186195566320158}
   - component: {fileID: 9063640673996560283}
   m_Layer: 7
   m_Name: Submarine
@@ -129,6 +130,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   body: {fileID: 7466756816772244395}
+--- !u!114 &8243186195566320158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647604974979291042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8762e9d3fc98194eb783c32552f668d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLives: 4
+  speedBoostMultiplier: 1.5
+  boostDuration: 2
+  invulnerabilityTime: 2
+  submarineCollider: {fileID: 9063640673996560283}
+  lightObject: {fileID: 4020552012747463178}
+  flickerInterval: 0.1
 --- !u!60 &9063640673996560283
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -272,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697694101814323021}
   - component: {fileID: 4020552012747463178}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
