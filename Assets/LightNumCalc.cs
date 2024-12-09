@@ -23,16 +23,17 @@ public class LightNumCalc : MonoBehaviour
         lightNum = 0;
         if (prox.amountFish>0)
         {
-            lightNum = +100;
+            lightNum +=100;
         }
         if (prox.amountEnemy > 0)
         {
-            lightNum = +10;
+            lightNum +=10;
         }
         if (prox.amountWall> 0)
         {
-            lightNum = +1000;
+            lightNum += 1000;
         }
+        Debug.Log(lightNum);
         return lightNum;
     }
 }

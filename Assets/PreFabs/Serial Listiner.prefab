@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 1252598177742003765}
+  lightCalc: {fileID: 4178086847936996438}
   sensor_val: 0
   buttonR: 0
   buttonL: 0
@@ -95,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac4f08cf6c1c3c4896a83a5cee34359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prox: {fileID: 0}
 --- !u!1001 &1252598177735083859
 PrefabInstance:
   m_ObjectHideFlags: 0
