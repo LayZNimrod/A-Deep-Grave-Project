@@ -494,9 +494,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Submarine
       objectReference: {fileID: 0}
+    - target: {fileID: 1647604974979291042, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686430181375131006, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6571293073179594738, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
       propertyPath: m_Name
       value: UICollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571293073179594738, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9117446570364196900, guid: d4f8743bd8dd50345ae122c265b4963d, type: 3}
       propertyPath: proximityIcon

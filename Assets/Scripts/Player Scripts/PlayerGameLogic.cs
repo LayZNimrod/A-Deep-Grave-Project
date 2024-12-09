@@ -16,7 +16,6 @@ public class PlayerGameLogic : MonoBehaviour
     public Light2D lightObject;                // Reference to the light object
     public float flickerInterval = 0.1f;       // Interval for the light flicker
 
-
     private int currentLives;                 // Current lives of the submarine
     private bool isInvulnerable = false;      // Whether the submarine is currently invulnerable
     private PlayerMovement playerMovement;
@@ -52,19 +51,23 @@ public class PlayerGameLogic : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the collision is with an "Environment" object and handle accordingly
-        if (!isInvulnerable && collision.collider.CompareTag("Environment") && collision.collider == submarineCollider)
+        // Check if the collision is with an object tagged "Environment" or "Living Creatures"
+        if (isInvulnerable)
+            return;
+        if (collision.CompareTag("LivingCreature"))
         {
             HandleCollision();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collision is with an object tagged "Environment" or "Living Creatures"
-        if (!isInvulnerable && collision.CompareTag("LivingCreature") && collision == submarineCollider)
+        // Handle collision with solid "Environment" objects
+        if (isInvulnerable) return;
+
+        if (collision.collider.CompareTag("Environment"))
         {
             HandleCollision();
         }
