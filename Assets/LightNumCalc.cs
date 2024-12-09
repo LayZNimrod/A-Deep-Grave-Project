@@ -5,6 +5,10 @@ using UnityEngine;
 public class LightNumCalc : MonoBehaviour
 {
     [SerializeField] ProximityUI prox;
+    [SerializeField] PlaySFX sFX;
+    [SerializeField] PlayCutscene cutscene;
+    [SerializeField] PlayerGameLogic logic;
+
     int lightNum = 0;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,11 @@ public class LightNumCalc : MonoBehaviour
         {
             lightNum += 1000;
         }
-        Debug.Log(lightNum);
+        if ( cutscene.EndCutscene == true || sFX.Cutscene == true)
+        {
+            lightNum += 1;
+        }
+        lightNum += 10000 * logic.currentLives;
         return lightNum;
     }
 }

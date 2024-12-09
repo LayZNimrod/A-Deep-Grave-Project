@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movementDirection;
     private bool movingForward;
+    [SerializeField] SerialListiner seruak;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
+        float xInput = seruak.buttonR-seruak.buttonL;
+        float yInput = seruak.sensor_val;
 
         // Determine the movement direction
         movementDirection = new Vector2(xInput, yInput);
@@ -36,9 +37,13 @@ public class PlayerMovement : MonoBehaviour
             movingForward = xInput > 0;
         }
 
-        if (Mathf.Abs(yInput) > 0)
+        if (Mathf.Abs(yInput) > 450)
         {
-            body.velocity = new Vector2(body.velocity.x, yInput * speed);
+            body.velocity = new Vector2(body.velocity.x,  speed);
+        }
+        if (Mathf.Abs(yInput) < 350)
+        {
+            body.velocity = new Vector2(body.velocity.x,  -speed);
         }
 
         FlipBasedOnDirection(movingForward);

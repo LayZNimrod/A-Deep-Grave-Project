@@ -16,7 +16,7 @@ public class PlayerGameLogic : MonoBehaviour
     public Light2D lightObject;                // Reference to the light object
     public float flickerInterval = 0.1f;       // Interval for the light flicker
 
-    private int currentLives;                 // Current lives of the submarine
+    public int currentLives = 4;                 // Current lives of the submarine
     private bool isInvulnerable = false;      // Whether the submarine is currently invulnerable
     private PlayerMovement playerMovement;
 
