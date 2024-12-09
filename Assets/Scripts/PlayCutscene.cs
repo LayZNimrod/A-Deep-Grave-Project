@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayCutscene : MonoBehaviour
 {
@@ -18,12 +19,14 @@ public class PlayCutscene : MonoBehaviour
     public float speed = 1;
 
     [SerializeField] private CinemachineVirtualCamera cam;
-    
 
+    public GameObject ErrorIcon;
+    public bool EndCutscene = false;
     public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        ErrorIcon.GetComponent<Renderer>().enabled = false;
         audioSource = GetComponent<AudioSource>();
         animator.SetBool("Closed", true);
         animator.SetBool("Anim", false);
@@ -57,9 +60,12 @@ public class PlayCutscene : MonoBehaviour
     {
         if (audioSource != null)
         {
+            EndCutscene = true;
             audioSource.Play();
             //Copy this around
             Debug.Log("REACHED EYE");
+            ErrorIcon.GetComponent<Renderer>().enabled = true;
+
             StartCoroutine(AnimateEye());
             cameraShake.ShakeCamera(shakeIntensity, shakeTimer, StartFrequency, EndFrequency);
         }

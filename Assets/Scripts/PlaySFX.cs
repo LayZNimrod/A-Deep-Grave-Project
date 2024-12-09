@@ -17,6 +17,8 @@ public class PlaySFX : MonoBehaviour
     public float speed = 1;
 
     [SerializeField] private CinemachineVirtualCamera cam;
+
+    public bool Cutscene = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlaySFX : MonoBehaviour
         {
             if (audioSource != null)
             {
+                Cutscene = true;
                 audioSource.Play();
                 StartCoroutine(ZoomOut());
                 cameraShake.ShakeCamera(shakeIntensity, shakeTimer, StartFrequency, EndFrequency);
@@ -45,6 +48,7 @@ public class PlaySFX : MonoBehaviour
                 cam.m_Lens.OrthographicSize += 0.5f;
                 yield return new WaitForSeconds(0.2f);
             }
+        Cutscene = false;
     }
     // Update is called once per frame
     void Update()
