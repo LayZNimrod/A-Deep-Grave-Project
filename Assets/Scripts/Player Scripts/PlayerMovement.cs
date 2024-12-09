@@ -37,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
             movingForward = xInput > 0;
         }
 
-        if (Mathf.Abs(yInput) > 450)
+        if (Mathf.Abs(yInput) > 400)
         {
-            body.velocity = new Vector2(body.velocity.x,  speed);
+            body.velocity = new Vector2(body.velocity.x, -speed);
         }
-        if (Mathf.Abs(yInput) < 350)
+        if (Mathf.Abs(yInput) < 250)
         {
-            body.velocity = new Vector2(body.velocity.x,  -speed);
+            body.velocity = new Vector2(body.velocity.x, speed);
         }
 
         FlipBasedOnDirection(movingForward);

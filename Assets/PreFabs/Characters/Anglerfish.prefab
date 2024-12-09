@@ -260,5 +260,5 @@ MonoBehaviour:
   movementArea: {fileID: 0}
   target: {fileID: 0}
   detectionRange: 5
-  chaseSpeed: 3
+  chaseSpeed: 2
   loseTargetTime: 3

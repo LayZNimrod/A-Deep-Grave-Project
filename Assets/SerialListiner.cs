@@ -9,7 +9,7 @@ public class SerialListiner : MonoBehaviour
     public int sensor_val = 0;
     public int buttonR = 0;
     public int buttonL = 0;
-    public int numToSend = 0;
+
 
     // Start is called before the first frame update
 
