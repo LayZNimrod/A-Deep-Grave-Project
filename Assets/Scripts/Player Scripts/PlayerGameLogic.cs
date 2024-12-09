@@ -1,57 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerGameLogic : MonoBehaviour
 {
     [Header("Submarine Settings")]
     public int maxLives = 4;                  // Total lives the submarine starts with
-    public float bumpDistance = 2.0f;         // Distance the submarine is bumped away upon collision
-    public float invulnerabilityTime = 2.0f;  // Duration of invulnerability after being hit
-    public float bumpForce = 5.0f;            // Force applied to bump the submarine
+    public float speedBoostMultiplier = 1.5f; // Speed boost multiplier after a hit
+    public float boostDuration = 2f;          // Duration of the speed boost
+    public float invulnerabilityTime = 2f;    // Duration of invulnerability after being hit
+    public Collider2D submarineCollider;
+
+    [Header("Light Flicker Settings")]
+    public Light2D lightObject;                // Reference to the light object
+    public float flickerInterval = 0.1f;       // Interval for the light flicker
+
 
     private int currentLives;                 // Current lives of the submarine
     private bool isInvulnerable = false;      // Whether the submarine is currently invulnerable
-    private Rigidbody2D rb;                  // Rigidbody2D component of the submarine
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         currentLives = maxLives; // Initialize lives
-        rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
+        playerMovement = GetComponent<PlayerMovement>();
+
+        if (playerMovement == null)
         {
-            Debug.LogError("Rigidbody2D is missing on the Submarine.");
+            Debug.LogError("PlayerMovement script is not attached to the submarine.");
+        }
+
+        // Ensure the primary collider is assigned
+        if (submarineCollider == null)
+        {
+            submarineCollider = GetComponent<Collider2D>();
+            if (submarineCollider == null)
+            {
+                Debug.LogError("Submarine Collider is not assigned or found. Please assign it.");
+            }
+        }
+
+        // Ensure the light is assigned
+        if (lightObject == null)
+        {
+            lightObject = GetComponentInChildren<Light2D>();
+            if (lightObject == null)
+            {
+                Debug.LogWarning("Light object not assigned or found.");
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision is with an "Environment" object and handle accordingly
-        if (!isInvulnerable && collision.gameObject.CompareTag("Environment"))
+        if (!isInvulnerable && collision.collider.CompareTag("Environment") && collision.collider == submarineCollider)
         {
-            HandleCollision(collision.contacts[0].point, collision.transform.position);
+            HandleCollision();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the collision is with an object tagged "Environment" or "Living Creatures"
-        if (!isInvulnerable && other.CompareTag("LivingCreature"))
+        if (!isInvulnerable && collision.CompareTag("LivingCreature") && collision == submarineCollider)
         {
-            HandleCollision(transform.position, other.transform.position);
+            HandleCollision();
         }
     }
 
-    private void HandleCollision(Vector2 impactPoint, Vector2 sourcePosition)
+    private void HandleCollision()
     {
         currentLives--; // Reduce lives
         Debug.Log($"Submarine hit! Remaining lives: {currentLives}");
 
-        // Handle bumping away from the collision object
-        Vector3 bumpDirection = ((Vector2)transform.position - sourcePosition).normalized;
-        rb.AddForce(bumpDirection * bumpForce, ForceMode2D.Impulse);
-
-        // Trigger invulnerability
+        // Trigger speed boost and invulnerability
+        StartCoroutine(SpeedBoostCoroutine());
         StartCoroutine(InvulnerabilityCoroutine());
 
         // Handle death logic if lives are exhausted
@@ -61,19 +86,49 @@ public class PlayerGameLogic : MonoBehaviour
         }
     }
 
+    private IEnumerator SpeedBoostCoroutine()
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.speed *= speedBoostMultiplier; // Apply speed boost
+            yield return new WaitForSeconds(boostDuration);
+            playerMovement.speed /= speedBoostMultiplier; // Reset speed
+        }
+    }
+
     private IEnumerator InvulnerabilityCoroutine()
     {
         isInvulnerable = true;
-        Debug.Log("Submarine is invulnerable.");
+        submarineCollider.enabled = false; // Temporarily disable primary collider
+
+        if (lightObject != null)
+        {
+            StartCoroutine(FlickerLightCoroutine());
+        }
+
         yield return new WaitForSeconds(invulnerabilityTime);
         isInvulnerable = false;
-        Debug.Log("Submarine is no longer invulnerable.");
+        submarineCollider.enabled = true; // Re-enable primary collider
+    }
+
+    private IEnumerator FlickerLightCoroutine()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < invulnerabilityTime)
+        {
+            lightObject.enabled = !lightObject.enabled; // Toggle light
+            yield return new WaitForSeconds(flickerInterval);
+            elapsedTime += flickerInterval;
+        }
+
+        lightObject.enabled = true; // Ensure light is on after invulnerability ends
     }
 
     private void HandleDeath()
     {
         Debug.Log("Submarine destroyed!");
-        // Add your death handling logic here (e.g., game over, respawn, etc.)
-        gameObject.SetActive(false); // Temporarily disable the submarine
+        // Add your death handling logic here
+        Destroy(gameObject); // Temporarily disable the submarine
     }
 }
