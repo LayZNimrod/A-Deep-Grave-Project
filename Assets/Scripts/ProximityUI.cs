@@ -8,6 +8,9 @@ public class ProximityUI : MonoBehaviour
     public Image proximityIcon; //Assign UI icon in the Inspector
     public AnimationClip proximityIconGlitch; //Assign UI icon in the Inspector
     public float fadeSpeed = 2.0f;    // Speed of the fade in/out
+    public int amountEnemy = 0;
+    public int amountFish = 0;
+    public int amountWall = 0;
 
     private int nearbyObjectsCount = 0; // Tracks how many objects are within range
     private Color iconColor;           // Stores the initial color of the icon
@@ -23,11 +26,22 @@ public class ProximityUI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature"))
+        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
         {
             // Increment nearby object count
             nearbyObjectsCount++;
-
+            if (other.CompareTag("Environment"))
+            {
+                amountWall++;
+            }
+            if (other.CompareTag("LivingCreature"))
+            {
+                amountEnemy++;
+            }
+            if (other.CompareTag("iddy bitty fish"))
+            {
+                amountFish++;
+            }
             // Start fading in the icon
             if (nearbyObjectsCount > 0)
             {
@@ -38,11 +52,22 @@ public class ProximityUI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature"))
+        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
         {
             // Decrement nearby object count
             nearbyObjectsCount--;
-
+            if (other.CompareTag("Environment"))
+            {
+                amountWall--;
+            }
+            if (other.CompareTag("LivingCreature"))
+            {
+                amountEnemy--;
+            }
+            if (other.CompareTag("iddy bitty fish"))
+            {
+                amountFish--;
+            }
             // Start fading out the icon if no objects are nearby
             if (nearbyObjectsCount <= 0)
             {

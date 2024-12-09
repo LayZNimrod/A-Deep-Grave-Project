@@ -5,6 +5,7 @@ using UnityEngine;
 public class SerialListiner : MonoBehaviour
 {
     [SerializeField] SerialController se;
+    [SerializeField] LightNumCalc lightCalc;
     public int sensor_val = 0;
     public int buttonR = 0;
     public int buttonL = 0;
@@ -36,9 +37,6 @@ public class SerialListiner : MonoBehaviour
     }
     public void serialOutput()
     {
-        if (true)
-        {
-            se.SendSerialMessage(numToSend.ToString()+"\n");
-        }
+        se.SendSerialMessage(lightCalc.grabLightNum().ToString()+"\n");
     }
 }

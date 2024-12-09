@@ -7,6 +7,7 @@ TagManager:
   - LivingCreature
   - Environment
   - BigBad
+  - iddy bitty fish
   layers:
   - Default
   - TransparentFX
