@@ -16,6 +16,7 @@ public class ProximityUI : MonoBehaviour
     private Color iconColor;           // Stores the initial color of the icon
 
     public Transform submarine;
+    private Vector3 offset;
 
     private void Start()
     {
@@ -29,27 +30,27 @@ public class ProximityUI : MonoBehaviour
         {
             Debug.LogWarning("Submarine reference is missing in ProximityUI.");
         }
+        else
+        {
+            offset = transform.position - submarine.position;
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (submarine != null)
         {
-            // Update position to follow the submarine
-            transform.position = submarine.position;
+            // Update position to follow the submarine with the offset
+            transform.position = submarine.position + offset;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
+        if (other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
         {
             // Increment nearby object count
             nearbyObjectsCount++;
-            if (other.CompareTag("Environment"))
-            {
-                amountWall++;
-            }
             if (other.CompareTag("LivingCreature"))
             {
                 amountEnemy++;
@@ -64,18 +65,35 @@ public class ProximityUI : MonoBehaviour
                 StartCoroutine(FadeIcon(1)); // Fade to full visibility
             }
         }
+        // This part will detect environment objects using isTrigger
+        else if (other.CompareTag("Environment"))
+        {
+            // For trigger colliders set as non-trigger (solid objects), detect them as well
+            nearbyObjectsCount++;
+            amountWall++;
+
+            // Start fading in the icon
+            StartCoroutine(FadeIcon(1)); // Fade to full visibility
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Environment"))
+        {
+            nearbyObjectsCount++;
+            amountWall++;
+
+            // Start fading in the icon
+            StartCoroutine(FadeIcon(1)); // Fade to full visibility
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Environment") || other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
+        if (other.CompareTag("LivingCreature") || other.CompareTag("iddy bitty fish"))
         {
             // Decrement nearby object count
             nearbyObjectsCount--;
-            if (other.CompareTag("Environment"))
-            {
-                amountWall--;
-            }
             if (other.CompareTag("LivingCreature"))
             {
                 amountEnemy--;
@@ -84,6 +102,33 @@ public class ProximityUI : MonoBehaviour
             {
                 amountFish--;
             }
+            // Start fading out the icon if no objects are nearby
+            if (nearbyObjectsCount <= 0)
+            {
+                StartCoroutine(FadeIcon(0)); // Fade to invisible
+            }
+        }
+        else if (other.CompareTag("Environment"))
+        {
+            // Decrement nearby object count when exiting the environment
+            nearbyObjectsCount--;
+            amountWall--;
+
+            // Start fading out the icon if no objects are nearby
+            if (nearbyObjectsCount <= 0)
+            {
+                StartCoroutine(FadeIcon(0)); // Fade to invisible
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Environment"))
+        {
+            nearbyObjectsCount--;
+            amountWall--;
+
             // Start fading out the icon if no objects are nearby
             if (nearbyObjectsCount <= 0)
             {
